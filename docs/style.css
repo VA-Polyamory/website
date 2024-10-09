@@ -67,10 +67,67 @@ body{
   margin-bottom: 0px;
   overflow-y: auto;
   max-height: 165px;
+  color: whitesmoke;
 }
 
 .carousel-indicators {
   bottom: -20px;
+}
+
+.carousel-control-prev-icon {
+  filter: invert(0) !important;
+}
+
+.carousel-control-next-icon {
+  filter: invert(0) !important;
+}
+
+.carousel-indicators button {
+  filter: invert(1) !important;
+}
+
+.headerimg {
+  filter: invert(1);
+}
+
+iframe {
+  filter: invert(.9) saturate(0.5) hue-rotate(145deg);
+}
+
+.body-section {
+  background-color: rgba(0,0,0,.7);
+  color: whitesmoke;
+  text-align: center;
+}
+
+.home {
+  background: url(assets/richmond1.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.about {
+  background: url(assets/richmond2.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.events {
+  background: url(assets/richmond3.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.contact {
+  background: url(assets/richmond4.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.article {
+  background: url(assets/richmond5.jpg);
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 @media (hover: hover){
