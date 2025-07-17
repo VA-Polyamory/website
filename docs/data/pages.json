@@ -1,0 +1,38 @@
+[
+    {
+      "index": 0,
+      "title": "Home",
+      "source": "index.html",
+      "hidden": false,
+      "parent": null
+    },
+    {
+      "index": 1,
+      "title": "Resources",
+      "source": "resources.html",
+      "hidden": false,
+      "parent": null
+    },
+    {
+      "index": 2,
+      "title": "Contribute",
+      "source": "contribute.html",
+      "hidden": false,
+      "parent": null
+    },
+    {
+      "index": 3,
+      "title": "Contact Us",
+      "source": "contact.html",
+      "hidden": false,
+      "parent": null
+    },
+    {
+      "index": 4,
+      "title": "Events",
+      "source": "events.html",
+      "hidden": false,
+      "parent": null
+    }
+  ]
+  

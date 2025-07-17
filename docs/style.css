@@ -2,15 +2,12 @@ html {
     height: 100%;
     width: 100%;
   }
-  
-body{
-    min-height: 100vh;
-}
 
 #pagewidth {
-  min-height: 100vh;
-  overflow: hidden;
+  min-height: 100%;
+  
 }
+
 
 #footer-section {
     width: 100%;
@@ -93,6 +90,15 @@ iframe {
   filter: invert(.9) saturate(0.5) hue-rotate(145deg);
 }
 
+.subheading-top-pad {
+  padding-top: 20px;
+}
+
+.subtext {
+  text-align: center; 
+  font-style: italic
+}
+
 .body-section {
   background-color: rgba(0,0,0,.7);
   color: whitesmoke;
@@ -148,3 +154,14 @@ iframe {
     }
 
   }
+
+/* for use in debugging overflows
+* {
+  outline: 1px solid rgba(255, 0, 0, 0.3);
+}
+   
+ 
+html, body {
+  overflow-x: visible !important;
+}
+*/

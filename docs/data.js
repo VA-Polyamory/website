@@ -1,1 +1,0 @@
-//This is where we will store links/data so they can be easily changed without searching through the html files and such

@@ -1,1 +1,1 @@
-// This is where custon js will go
+// This is where custom js will go
