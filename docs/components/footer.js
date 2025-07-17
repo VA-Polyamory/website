@@ -5,8 +5,8 @@ class Footer extends HTMLElement {
   
     connectedCallback() {
         this.innerHTML = `
-            <footer id="footer-section" class="bg-dark border-bottom border-body text-white text-center mt-0 p-2 d-flex align-items-center justify-content-center mb-0">
-            <div class="footercontent">
+            <footer id="footer-section" class="bg-dark border-body text-white text-center mt-0 p-2 d-flex align-items-center justify-content-center mb-0">
+            <div class="footercontent container-fluid">
 
                 <div>
                     <h6><a href="https://forms.gle/nw4Rwkx6wgH5XD537">Link to Feedback Form</a></h6>
