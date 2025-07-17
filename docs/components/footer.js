@@ -14,7 +14,7 @@ class Footer extends HTMLElement {
 
                 <div class="ccdata small">
                     <p>
-                        <a href="#pagewidth">Virginia Polyamory</a> &copy;
+                        <a href="index.html">Virginia Polyamory</a> &copy;
                     </p>
                     <p>
                         <span class="copy">
