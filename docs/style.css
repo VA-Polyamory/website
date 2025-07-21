@@ -90,10 +90,6 @@ iframe {
   filter: invert(.9) saturate(0.5) hue-rotate(145deg);
 }
 
-.subheading-top-pad {
-  padding-top: 20px;
-}
-
 .body-section {
   background-color: rgba(0,0,0,.7);
   color: whitesmoke;
