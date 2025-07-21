@@ -9,6 +9,13 @@ html {
   
 }
 
+iframe[src="librarything-widget.html"] {
+  color-scheme: normal;
+  forced-color-adjust: none;
+  filter: invert(0%) hue-rotate(0deg); /* cancel any browser-side inversion */
+  background: transparent;
+}
+
 
 #footer-section {
     width: 100%;
