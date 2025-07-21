@@ -3,7 +3,7 @@ class Navbar extends HTMLElement {
     super();
   }
   
-  async connectedCallback() {
+  connectedCallback() {
     // Set base HTML immediately
     this.innerHTML = `
       <nav class="navbar navbar-expand-md bg-dark border-bottom border-body sticky-top" data-bs-theme="dark">
@@ -18,63 +18,66 @@ class Navbar extends HTMLElement {
         </div>
       </nav>
     `;
+    const loadNavbarItems = async () => {
+      try {
+        const res = await fetch("data/pages.json");
+        const pages = await res.json();
 
-    try {
-      const res = await fetch("data/pages.json");
-      const pages = await res.json();
+        const navList = this.querySelector("#navbar-items");
+        const currentPath = location.pathname.split("/").pop() || "index.html";
+        const currentId = pages.find(p => p.source.endsWith(currentPath))?.id;
 
-      const navList = this.querySelector("#navbar-items");
-      const currentPath = location.pathname.split("/").pop() || "index.html";
-      const currentId = pages.find(p => p.source.endsWith(currentPath))?.id;
-
-      const topLevelPages = pages
-        .filter(p => !p.hidden && !p.parent)
-        .sort((a, b) => a.index - b.index);
-
-      for (const page of topLevelPages) {
-        const children = pages
-          .filter(p => p.parent === page.id && !p.hidden)
+        const topLevelPages = pages
+          .filter(p => !p.hidden && !p.parent)
           .sort((a, b) => a.index - b.index);
 
-        if (children.length > 0) {
-          // Dropdown
-          const dropdown = document.createElement("li");
-          dropdown.className = "nav-item dropdown";
-          dropdown.innerHTML = `
-            <a class="nav-link dropdown-toggle ${page.id === currentId ? "active" : ""}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              ${page.title}
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="${page.source}">${page.title}</a></li>
-              ${children
-                .map(
-                  child => `
-                <li>
-                  <a class="dropdown-item ${child.id === currentId ? "active" : ""}" href="${child.source}">
-                    ${child.title}
-                  </a>
-                </li>
-              `
-                )
-                .join("")}
-            </ul>
-          `;
-          navList.appendChild(dropdown);
-        } else {
-          // Regular nav item
-          const item = document.createElement("li");
-          item.className = "nav-item";
-          item.innerHTML = `
-            <a class="nav-link ${page.id === currentId ? "active" : ""}" href="${page.source}">
-              ${page.title}
-            </a>
-          `;
-          navList.appendChild(item);
+        for (const page of topLevelPages) {
+          const children = pages
+            .filter(p => p.parent === page.id && !p.hidden)
+            .sort((a, b) => a.index - b.index);
+
+          if (children.length > 0) {
+            // Dropdown
+            const dropdown = document.createElement("li");
+            dropdown.className = "nav-item dropdown";
+            dropdown.innerHTML = `
+              <a class="nav-link dropdown-toggle ${page.id === currentId ? "active" : ""}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                ${page.title}
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="${page.source}">${page.title}</a></li>
+                ${children
+                  .map(
+                    child => `
+                  <li>
+                    <a class="dropdown-item ${child.id === currentId ? "active" : ""}" href="${child.source}">
+                      ${child.title}
+                    </a>
+                  </li>
+                `
+                  )
+                  .join("")}
+              </ul>
+            `;
+            navList.appendChild(dropdown);
+          } else {
+            // Regular nav item
+            const item = document.createElement("li");
+            item.className = "nav-item";
+            item.innerHTML = `
+              <a class="nav-link ${page.id === currentId ? "active" : ""}" href="${page.source}">
+                ${page.title}
+              </a>
+            `;
+            navList.appendChild(item);
+          }
         }
+      } catch (err) {
+        console.error("Failed to load navbar from pages.json", err);
       }
-    } catch (err) {
-      console.error("Failed to load navbar from pages.json", err);
     }
+
+    loadNavbarItems();
   }
 }
 customElements.define("navbar-component", Navbar);
