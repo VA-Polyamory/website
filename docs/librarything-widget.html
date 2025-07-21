@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LibraryThing Widget</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+<body data-bs-theme="dark" class="bg-dark text-light" style="margin:0;">
+
+  <!-- LibraryThing Widget container -->
+  <div id="w69450fb97d94f86f72ffd1d030540538"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+  <script
+    type="text/javascript"
+    charset="UTF-8"
+    src="https://www.librarything.com/widget_get.php?userid=vapolyamory&theID=w69450fb97d94f86f72ffd1d030540538"
+  ></script>
+
+  <noscript>
+    <a href="https://www.librarything.com/profile/vapolyamory">My Library</a> at
+    <a href="https://www.librarything.com">LibraryThing</a>
+  </noscript>
+
+  <script>
+    // Resize parent iframe height to fit content
+    function sendHeight() {
+      const height = document.documentElement.scrollHeight;
+      window.parent.postMessage({ type: "librarythingHeight", height }, "*");
+
+    }
+
+    // Send height once widget likely loaded, adjust as needed
+    window.addEventListener("load", () => {
+      sendHeight();
+      // Also send height after short delay (in case widget loads late)
+      setTimeout(sendHeight, 1000);
+      setTimeout(sendHeight, 3000);
+    });
+  </script>
+
+</body>
+</html>
