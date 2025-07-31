@@ -1,15 +1,12 @@
 html {
     height: 100%;
     width: 100%;
+    background-color: #212529;
   }
-  
-body{
-    min-height: 100vh;
-}
 
 #pagewidth {
-  min-height: 100vh;
-  overflow: hidden;
+  min-height: 100%;
+  
 }
 
 #footer-section {
@@ -89,7 +86,7 @@ body{
   filter: invert(1);
 }
 
-iframe {
+#calendar{
   filter: invert(.9) saturate(0.5) hue-rotate(145deg);
 }
 
@@ -148,3 +145,14 @@ iframe {
     }
 
   }
+
+/* for use in debugging overflows
+* {
+  outline: 1px solid rgba(255, 0, 0, 0.3);
+}
+   
+ 
+html, body {
+  overflow-x: visible !important;
+}
+*/
