@@ -27,21 +27,56 @@
   </noscript>
 
   <script>
-    // Resize parent iframe height to fit content
-    function sendHeight() {
-      const height = document.documentElement.scrollHeight;
-      window.parent.postMessage({ type: "librarythingHeight", height }, "*");
-
+    function reportHeight() {
+      var height = Math.ceil(document.body.scrollHeight) + 1;
+      parent.postMessage({ type: 'librarythingHeight', height }, '*');
+      //console.log('Reported height:', height);
     }
 
-    // Send height once widget likely loaded, adjust as needed
-    window.addEventListener("load", () => {
-      sendHeight();
-      // Also send height after short delay (in case widget loads late)
-      setTimeout(sendHeight, 1000);
-      setTimeout(sendHeight, 3000);
+    function waitForAllImages(callback) {
+      const imgs = Array.from(document.querySelectorAll('img'));
+      if (imgs.length === 0) return callback();
+
+      let loaded = 0;
+
+      const checkDone = () => {
+        loaded++;
+        if (loaded >= imgs.length) callback();
+      };
+
+      imgs.forEach(img => {
+        if (img.complete) {
+          checkDone();
+        } else {
+          img.addEventListener('load', checkDone);
+          img.addEventListener('error', checkDone);
+        }
+      });
+    }
+
+    function handleResizing() {
+      // Allow layout to settle first
+      setTimeout(waitForAllImages(() => {
+        reportHeight();
+      }), 100);
+      
+    }
+
+    // Watch for new images added dynamically
+    const observer = new MutationObserver(() => {
+      handleResizing();
     });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    window.addEventListener('load', handleResizing);
+    window.addEventListener('resize', handleResizing);
+
   </script>
+
 
 </body>
 </html>

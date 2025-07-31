@@ -21,11 +21,13 @@ const observer = new ResizeObserver(entries => {
 observer.observe(container);
 
 window.addEventListener('message', (event) => {
+  //console.log('Message received:', event);
   // Verify the message type to avoid unwanted messages
   if (event.data?.type === 'librarythingHeight') {
-    const iframe = document.querySelector('iframe[src="librarything-widget.html"]');
+    const iframe = document.getElementById('librarything-iframe');
     if (iframe && event.data.height) {
       iframe.style.height = event.data.height + 'px';
+      //console.log('iframe height:',event.data.height);
     }
   }
 });
