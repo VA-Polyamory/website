@@ -86,7 +86,7 @@ html {
   filter: invert(1);
 }
 
-iframe[src="https://calendar.google.com/calendar/embed?height=400&wkst=1&ctz=America%2FNew_York&bgcolor=%23ffffff&showTitle=0&showDate=0&showPrint=0&showCalendars=0&mode=AGENDA&src=dmFwb2x5YW1vcnlAZ21haWwuY29t&color=%23F6BF26"] {
+#calendar{
   filter: invert(.9) saturate(0.5) hue-rotate(145deg);
 }
 
