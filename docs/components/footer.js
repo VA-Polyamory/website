@@ -44,8 +44,8 @@ class Footer extends HTMLElement {
                         </div>
                         <div class="col-4 justify-content-center">
                             <h6>
-                                <a rel="noreferrer" class="card link-card small p-1" href="https://x.com/VApolyamory" target="_blank">
-                                    <i class="bi bi-twitter-x fs-3"></i> Twitter/X
+                                <a rel="noreferrer" class="card link-card small p-1" href="https://bsky.app/profile/vapolyamory.org" target="_blank">
+                                    <i class="bi bi-bluesky fs-3"></i> Bluesky
                                 </a>
                             </h6>
                         </div>
